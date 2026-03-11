@@ -185,6 +185,7 @@
             Sum.TabIndex = 14;
             Sum.Text = "Сумма векторов";
             Sum.UseVisualStyleBackColor = true;
+            Sum.Click += Sum_Click;
             // 
             // Sub
             // 
@@ -194,6 +195,7 @@
             Sub.TabIndex = 15;
             Sub.Text = "Вычитание векторов";
             Sub.UseVisualStyleBackColor = true;
+            Sub.Click += Sub_Click;
             // 
             // Dot
             // 
@@ -203,6 +205,7 @@
             Dot.TabIndex = 16;
             Dot.Text = "Скалярное произведение";
             Dot.UseVisualStyleBackColor = true;
+            Dot.Click += Dot_Click;
             // 
             // Cross
             // 
@@ -212,6 +215,7 @@
             Cross.TabIndex = 17;
             Cross.Text = "Векторное произведение";
             Cross.UseVisualStyleBackColor = true;
+            Cross.Click += Cross_Click;
             // 
             // LenVect1
             // 
@@ -221,6 +225,7 @@
             LenVect1.TabIndex = 18;
             LenVect1.Text = "Длина первого вектора";
             LenVect1.UseVisualStyleBackColor = true;
+            LenVect1.Click += LenVect1_Click;
             // 
             // LenVect2
             // 
@@ -230,6 +235,7 @@
             LenVect2.TabIndex = 19;
             LenVect2.Text = "Длина второго вектора";
             LenVect2.UseVisualStyleBackColor = true;
+            LenVect2.Click += LenVect2_Click;
             // 
             // SumRes
             // 
