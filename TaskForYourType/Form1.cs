@@ -17,98 +17,71 @@ namespace TaskForYourType
 
         }
 
-        private void Sum_Click(object sender, EventArgs e)
+        private void Vect1X_TextChanged(object sender, EventArgs e)
         {
-            Vector Vect1 = new Vector(
+            Recalculate();
+        }
+
+        private void Vect1Y_TextChanged(object sender, EventArgs e)
+        {
+            Recalculate();
+        }
+
+        private void Vect1Z_TextChanged(object sender, EventArgs e)
+        {
+            Recalculate();
+        }
+
+        private void Vect2X_TextChanged(object sender, EventArgs e)
+        {
+            Recalculate();
+        }
+
+        private void Vect2Y_TextChanged(object sender, EventArgs e)
+        {
+            Recalculate();
+        }
+
+        private void Vect2Z_TextChanged(object sender, EventArgs e)
+        {
+            Recalculate();
+        }
+
+        private void Recalculate()
+        {
+            if (string.IsNullOrEmpty(Vect1X.Text) ||
+                string.IsNullOrEmpty(Vect1Y.Text) ||
+                string.IsNullOrEmpty(Vect1Z.Text) ||
+                string.IsNullOrEmpty(Vect2X.Text) ||
+                string.IsNullOrEmpty(Vect2Y.Text) ||
+                string.IsNullOrEmpty(Vect2Z.Text))
+            {
+                return;
+            }
+
+            var v1 = new Vector(
                 int.Parse(Vect1X.Text),
                 int.Parse(Vect1Y.Text),
-                int.Parse(Vect1Z.Text)
-                );
-            Vector Vect2 = new Vector(
+                int.Parse(Vect1Z.Text));
+
+            var v2 = new Vector(
                 int.Parse(Vect2X.Text),
                 int.Parse(Vect2Y.Text),
-                int.Parse(Vect2Z.Text)
-                );
-            Vector res = Vect1 + Vect2;
-            string outputRes = "Vector = (" + res.GetX() + " , " + res.GetY() + " , " + res.GetZ() + ")";
-            SumRes.Text = outputRes;
-        }
+                int.Parse(Vect2Z.Text));
 
-        private void Sub_Click(object sender, EventArgs e)
-        {
-            Vector Vect1 = new Vector(
-                int.Parse(Vect1X.Text),
-                int.Parse(Vect1Y.Text),
-                int.Parse(Vect1Z.Text)
-                );
-            Vector Vect2 = new Vector(
-                int.Parse(Vect2X.Text),
-                int.Parse(Vect2Y.Text),
-                int.Parse(Vect2Z.Text)
-                );
-            Vector res = Vect1 - Vect2;
-            string outputRes = "Vector = (" + res.GetX() + " , " + res.GetY() + " , " + res.GetZ() + ")";
-            SubRes.Text = outputRes;
-        }
+            var sum = v1 + v2;
+            SumRes.Text = $"Vector = ({sum.GetX()} , {sum.GetY()} , {sum.GetZ()})";
 
-        private void Dot_Click(object sender, EventArgs e)
-        {
-            Vector Vect1 = new Vector(
-               int.Parse(Vect1X.Text),
-               int.Parse(Vect1Y.Text),
-               int.Parse(Vect1Z.Text)
-               );
-            Vector Vect2 = new Vector(
-                int.Parse(Vect2X.Text),
-                int.Parse(Vect2Y.Text),
-                int.Parse(Vect2Z.Text)
-                );
-            int res = Vect1 * Vect2;
-            string outputRes = "—кал€рное произведение = " + res;
-            DotRes.Text = outputRes;
-        }
+            var sub = v1 - v2;
+            SubRes.Text = $"Vector = ({sub.GetX()} , {sub.GetY()} , {sub.GetZ()})";
 
-        private void Cross_Click(object sender, EventArgs e)
-        {
-            Vector Vect1 = new Vector(
-                int.Parse(Vect1X.Text),
-                int.Parse(Vect1Y.Text),
-                int.Parse(Vect1Z.Text)
-                );
-            Vector Vect2 = new Vector(
-                int.Parse(Vect2X.Text),
-                int.Parse(Vect2Y.Text),
-                int.Parse(Vect2Z.Text)
-                );
-            Vector res = Vect1 & Vect2;
-            string outputRes = "Vector = (" + res.GetX() + " , " + res.GetY() + " , " + res.GetZ() + ")";
-            CrossRes.Text = outputRes;
-        }
+            DotRes.Text = $"—кал€рное произведение = {v1 * v2}";
 
-        private void LenVect1_Click(object sender, EventArgs e)
-        {
-            Vector Vect1 = new Vector(
-                int.Parse(Vect1X.Text),
-                int.Parse(Vect1Y.Text),
-                int.Parse(Vect1Z.Text)
-                );
+            var cross = v1 & v2;
+            CrossRes.Text = $"Vector = ({cross.GetX()} , {cross.GetY()} , {cross.GetZ()})";
 
-            double res = Vect1.Lenght();
-            string outputRes = "ƒлина вектора = " + res;
-            LenVect1Res.Text = outputRes;
-        }
-
-        private void LenVect2_Click(object sender, EventArgs e)
-        {
-            Vector Vect2 = new Vector(
-                int.Parse(Vect2X.Text),
-                int.Parse(Vect2Y.Text),
-                int.Parse(Vect2Z.Text)
-                );
-
-            double res = Vect2.Lenght();
-            string outputRes = "ƒлина вектора = " + res;
-            LenVect2Res.Text = outputRes;
+            LenVect1Res.Text = $"ƒлина вектора = {v1.Lenght()}";
+            LenVect2Res.Text = $"ƒлина вектора = {v2.Lenght()}";
         }
     }
 
@@ -138,29 +111,41 @@ namespace TaskForYourType
             Z = z;
         }
 
-        public static Vector operator+(Vector v1, Vector v2)
+        public static Vector operator +(Vector v1, Vector v2)
         {
             return new Vector(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
         }
-        
-        public static Vector operator-(Vector v1, Vector v2)
+
+        public static Vector operator -(Vector v1, Vector v2)
         {
             return new Vector(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z);
         }
 
-        public static int operator*(Vector v1, Vector v2) {
+        public static int operator *(Vector v1, Vector v2) {
             return v1.X * v2.X + v1.Y + v2.Y + v1.Z * v2.Z;
         }
 
-        public static Vector operator&(Vector v1, Vector v2)
+        public static Vector operator &(Vector v1, Vector v2)
         {
-            return new Vector(v1.Y* v2.Z -v1.Z * v2.Y, v1.Z * v2.X - v1.X * v2.Z, v1.X * v2.Y - v1.Y * v2.X);
+            return new Vector(v1.Y * v2.Z - v1.Z * v2.Y, v1.Z * v2.X - v1.X * v2.Z, v1.X * v2.Y - v1.Y * v2.X);
         }
 
         public double Lenght()
         {
             double result = Math.Sqrt(X * X + Y * Y + Z + Z);
             return result;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is Vector other)
+            {
+                return X == other.X &&
+                       Y == other.Y &&
+                       Z == other.Z;
+            }
+
+            return false;
         }
 
     }

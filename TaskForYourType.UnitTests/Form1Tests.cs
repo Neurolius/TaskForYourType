@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Extensions.DependencyModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TaskForYourType;
 
@@ -81,10 +82,8 @@ namespace TaskForYourType.UnitTests
             var b = new Vector(4, 5, 6);
 
             var result = a + b;
-
-            Assert.AreEqual(5, result.GetX());
-            Assert.AreEqual(7, result.GetY());
-            Assert.AreEqual(9, result.GetZ());
+            var expected = new Vector(5,7,9);
+            Assert.IsTrue(Equals(result, expected));
         }
 
         [TestMethod]
@@ -94,10 +93,8 @@ namespace TaskForYourType.UnitTests
             var b = new Vector(1, 2, 3);
 
             var result = a - b;
-
-            Assert.AreEqual(4, result.GetX());
-            Assert.AreEqual(5, result.GetY());
-            Assert.AreEqual(6, result.GetZ());
+            var expected = new Vector(4, 5, 6);
+            Assert.IsTrue(Equals(result, expected));
         }
 
         [TestMethod]
@@ -119,10 +116,8 @@ namespace TaskForYourType.UnitTests
             var b = new Vector(0, 1, 0);
 
             var result = a & b;
-
-            Assert.AreEqual(0, result.GetX());
-            Assert.AreEqual(0, result.GetY());
-            Assert.AreEqual(1, result.GetZ());
+            var expected = new Vector(0, 0, 1);
+            Assert.IsTrue(Equals(result, expected));
         }
 
     }

@@ -42,12 +42,6 @@
             Vect2X = new TextBox();
             Vect2Y = new TextBox();
             Vect2Z = new TextBox();
-            Sum = new Button();
-            Sub = new Button();
-            Dot = new Button();
-            Cross = new Button();
-            LenVect1 = new Button();
-            LenVect2 = new Button();
             SumRes = new Label();
             SubRes = new Label();
             DotRes = new Label();
@@ -99,6 +93,7 @@
             Vect1X.Size = new Size(100, 23);
             Vect1X.TabIndex = 4;
             Vect1X.Text = "0";
+            Vect1X.TextChanged += Vect1X_TextChanged;
             // 
             // Vect1Y
             // 
@@ -107,6 +102,7 @@
             Vect1Y.Size = new Size(100, 23);
             Vect1Y.TabIndex = 5;
             Vect1Y.Text = "0";
+            Vect1Y.TextChanged += Vect1Y_TextChanged;
             // 
             // Vect1Z
             // 
@@ -115,6 +111,7 @@
             Vect1Z.Size = new Size(100, 23);
             Vect1Z.TabIndex = 6;
             Vect1Z.Text = "0";
+            Vect1Z.TextChanged += Vect1Z_TextChanged;
             // 
             // label5
             // 
@@ -160,6 +157,7 @@
             Vect2X.Size = new Size(100, 23);
             Vect2X.TabIndex = 11;
             Vect2X.Text = "0";
+            Vect2X.TextChanged += Vect2X_TextChanged;
             // 
             // Vect2Y
             // 
@@ -168,6 +166,7 @@
             Vect2Y.Size = new Size(100, 23);
             Vect2Y.TabIndex = 12;
             Vect2Y.Text = "0";
+            Vect2Y.TextChanged += Vect2Y_TextChanged;
             // 
             // Vect2Z
             // 
@@ -176,71 +175,12 @@
             Vect2Z.Size = new Size(100, 23);
             Vect2Z.TabIndex = 13;
             Vect2Z.Text = "0";
-            // 
-            // Sum
-            // 
-            Sum.Location = new Point(27, 168);
-            Sum.Name = "Sum";
-            Sum.Size = new Size(120, 23);
-            Sum.TabIndex = 14;
-            Sum.Text = "Сумма векторов";
-            Sum.UseVisualStyleBackColor = true;
-            Sum.Click += Sum_Click;
-            // 
-            // Sub
-            // 
-            Sub.Location = new Point(27, 211);
-            Sub.Name = "Sub";
-            Sub.Size = new Size(129, 21);
-            Sub.TabIndex = 15;
-            Sub.Text = "Вычитание векторов";
-            Sub.UseVisualStyleBackColor = true;
-            Sub.Click += Sub_Click;
-            // 
-            // Dot
-            // 
-            Dot.Location = new Point(27, 253);
-            Dot.Name = "Dot";
-            Dot.Size = new Size(162, 23);
-            Dot.TabIndex = 16;
-            Dot.Text = "Скалярное произведение";
-            Dot.UseVisualStyleBackColor = true;
-            Dot.Click += Dot_Click;
-            // 
-            // Cross
-            // 
-            Cross.Location = new Point(27, 296);
-            Cross.Name = "Cross";
-            Cross.Size = new Size(162, 23);
-            Cross.TabIndex = 17;
-            Cross.Text = "Векторное произведение";
-            Cross.UseVisualStyleBackColor = true;
-            Cross.Click += Cross_Click;
-            // 
-            // LenVect1
-            // 
-            LenVect1.Location = new Point(27, 335);
-            LenVect1.Name = "LenVect1";
-            LenVect1.Size = new Size(162, 23);
-            LenVect1.TabIndex = 18;
-            LenVect1.Text = "Длина первого вектора";
-            LenVect1.UseVisualStyleBackColor = true;
-            LenVect1.Click += LenVect1_Click;
-            // 
-            // LenVect2
-            // 
-            LenVect2.Location = new Point(27, 380);
-            LenVect2.Name = "LenVect2";
-            LenVect2.Size = new Size(162, 23);
-            LenVect2.TabIndex = 19;
-            LenVect2.Text = "Длина второго вектора";
-            LenVect2.UseVisualStyleBackColor = true;
-            LenVect2.Click += LenVect2_Click;
+            Vect2Z.TextChanged += Vect2Z_TextChanged;
             // 
             // SumRes
             // 
             SumRes.AutoSize = true;
-            SumRes.Location = new Point(301, 168);
+            SumRes.Location = new Point(27, 169);
             SumRes.Name = "SumRes";
             SumRes.Size = new Size(45, 15);
             SumRes.TabIndex = 20;
@@ -249,7 +189,7 @@
             // SubRes
             // 
             SubRes.AutoSize = true;
-            SubRes.Location = new Point(301, 211);
+            SubRes.Location = new Point(27, 212);
             SubRes.Name = "SubRes";
             SubRes.Size = new Size(68, 15);
             SubRes.TabIndex = 21;
@@ -258,7 +198,7 @@
             // DotRes
             // 
             DotRes.AutoSize = true;
-            DotRes.Location = new Point(301, 253);
+            DotRes.Location = new Point(27, 254);
             DotRes.Name = "DotRes";
             DotRes.Size = new Size(147, 15);
             DotRes.TabIndex = 22;
@@ -267,7 +207,7 @@
             // CrossRes
             // 
             CrossRes.AutoSize = true;
-            CrossRes.Location = new Point(301, 296);
+            CrossRes.Location = new Point(27, 297);
             CrossRes.Name = "CrossRes";
             CrossRes.Size = new Size(145, 15);
             CrossRes.TabIndex = 23;
@@ -276,7 +216,7 @@
             // LenVect1Res
             // 
             LenVect1Res.AutoSize = true;
-            LenVect1Res.Location = new Point(301, 335);
+            LenVect1Res.Location = new Point(27, 336);
             LenVect1Res.Name = "LenVect1Res";
             LenVect1Res.Size = new Size(136, 15);
             LenVect1Res.TabIndex = 24;
@@ -285,7 +225,7 @@
             // LenVect2Res
             // 
             LenVect2Res.AutoSize = true;
-            LenVect2Res.Location = new Point(301, 380);
+            LenVect2Res.Location = new Point(27, 381);
             LenVect2Res.Name = "LenVect2Res";
             LenVect2Res.Size = new Size(135, 15);
             LenVect2Res.TabIndex = 25;
@@ -295,19 +235,13 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(823, 692);
+            ClientSize = new Size(537, 431);
             Controls.Add(LenVect2Res);
             Controls.Add(LenVect1Res);
             Controls.Add(CrossRes);
             Controls.Add(DotRes);
             Controls.Add(SubRes);
             Controls.Add(SumRes);
-            Controls.Add(LenVect2);
-            Controls.Add(LenVect1);
-            Controls.Add(Cross);
-            Controls.Add(Dot);
-            Controls.Add(Sub);
-            Controls.Add(Sum);
             Controls.Add(Vect2Z);
             Controls.Add(Vect2Y);
             Controls.Add(Vect2X);
@@ -345,12 +279,6 @@
         private TextBox Vect2X;
         private TextBox Vect2Y;
         private TextBox Vect2Z;
-        private Button Sum;
-        private Button Sub;
-        private Button Dot;
-        private Button Cross;
-        private Button LenVect1;
-        private Button LenVect2;
         private Label SumRes;
         private Label SubRes;
         private Label DotRes;
